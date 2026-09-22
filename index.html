@@ -437,9 +437,7 @@
                   <rect x="14" y="332" width="772" height="154" rx="10" fill="#f8fafc" stroke="#cbd5e1"
                     stroke-width="1.6" />
 
-                  <!-- ------------------------------------------------------------- -->
                   <!-- FOOTER LEFT: COMPANY ADDRESS & CONTACT DETAILS -->
-                  <!-- ------------------------------------------------------------- -->
                   <g id="footerCompanyDetails" transform="translate(28, 342)">
 
                     <!-- Row 1: Factory Address (2 Lines) -->
@@ -479,9 +477,7 @@
                   <line x1="510" y1="342" x2="510" y2="476" stroke="#cbd5e1" stroke-width="1.6"
                     stroke-dasharray="4 4" />
 
-                  <!-- ------------------------------------------------------------- -->
-                  <!-- FOOTER RIGHT: 6 ISO MEDICAL SYMBOLS (3 x 2 Grid, Enlarged & Crisp) -->
-                  <!-- ------------------------------------------------------------- -->
+                  <!-- FOOTER RIGHT: 6 ISO MEDICAL SYMBOLS (3 x 2 Grid, Enlarged and Crisp) -->
                   <g id="isoSymbolsGroup" transform="translate(528, 342)">
 
                     <!-- Row 1, Icon 1: Damaged Package -->
@@ -861,6 +857,9 @@
           }
           const serializer = new XMLSerializer();
           let svgString = serializer.serializeToString(labelSvg);
+
+          // Strip all comments to ensure valid XML without illegal comment sequences (e.g. double hyphens)
+          svgString = svgString.replace(/<!--[\s\S]*?-->/g, '');
 
           if (!svgString.includes('xmlns="http://www.w3.org/2000/svg"')) {
             svgString = svgString.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ');
