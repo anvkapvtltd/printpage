@@ -224,8 +224,8 @@
                     </div>
                   </div>
                   <div>
-                    <label class="block font-medium text-slate-600 mb-0.5">Document Revision Code</label>
-                    <input type="text" id="inputRevCode" value="JM-F-QAC-017 REV-08"
+                    <label class="block font-medium text-slate-600 mb-0.5">Document / Batch Revision Code</label>
+                    <input type="text" id="inputRevCode" value="INCREDIBLE B.NO. 1170926T1857-2"
                       class="w-full px-3 py-1.5 border border-slate-200 rounded-lg text-xs font-mono font-medium">
                   </div>
                 </div>
@@ -438,7 +438,7 @@
                     stroke-width="1.6" />
 
                   <!-- FOOTER LEFT: COMPANY ADDRESS & CONTACT DETAILS -->
-                  <g id="footerCompanyDetails" transform="translate(28, 370)">
+                  <g id="footerCompanyDetails" transform="translate(20, 340)">
 
                     <!-- Row 1: Factory Address (2 Lines) -->
                     <g transform="translate(0, 24)">
@@ -449,6 +449,7 @@
                         <tspan x="26" dy="0">Plot no. 231, Phase IV, Udyog Vihar, Gurugram,</tspan>
                         <tspan x="26" dy="24">Haryana India- 122001</tspan>
                       </text>
+
                     </g>
 
                     <!-- Row 2: Phone & Email side by side -->
@@ -469,7 +470,16 @@
                         <text id="svgEmail" x="28" y="13" font-family="'Inter', sans-serif" font-size="19"
                           font-weight="700" fill="#0f172a">curewith3d@anvka.com</text>
                       </g>
+
                     </g>
+
+                    <!-- Row 3: Document Revision / Batch Code (at the bottom start) -->
+                    <g transform="translate(0, 116)">
+                      <text id="svgRevCode" x="0" y="14" font-family="'Inter', monospace"
+                        font-size="13" font-weight="700" fill="#334155" letter-spacing="0.3">INCREDIBLE B.NO. 1170926T1857-2</text>
+                    </g>
+
+
 
                   </g>
 
@@ -547,7 +557,6 @@
                     </g>
 
                   </g>
-
                 </g>
 
               </svg>
@@ -1091,7 +1100,7 @@
       setVal('inputAddress', 'Plot no. 231, Phase IV, Udyog Vihar, Gurugram, Haryana India- 122001 ');
       setVal('inputPhone', '+91 920 555 9804');
       setVal('inputEmail', 'curewith3d@anvka.com');
-      setVal('inputRevCode', 'JM-F-QAC-017 REV-08');
+      setVal('inputRevCode', 'INCREDIBLE B.NO. 1170926T1857-2');
 
       setupLiveSync();
     }
