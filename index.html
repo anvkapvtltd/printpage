@@ -422,9 +422,9 @@
                       font-size="28" fill="#475569" letter-spacing="1.5">CASE ID</text>
                     <line x1="24" y1="58" x2="234" y2="58" stroke="#cbd5e1" stroke-width="1.5" />
 
-                    <!-- Giant Punchy Case ID -->
-                    <text id="svgCaseId" x="129" y="146" text-anchor="middle" font-family="'Inter', sans-serif"
-                      font-weight="900" font-size="72" letter-spacing="2" fill="#000000">E736</text>
+                    <!-- Case ID Value -->
+                    <text id="svgCaseId" x="129" y="140" text-anchor="middle" font-family="'Inter', sans-serif"
+                      font-weight="900" font-size="10" letter-spacing="2" fill="#000000">E736</text>
                   </g>
 
                 </g>
@@ -475,8 +475,8 @@
 
                     <!-- Row 3: Document Revision / Batch Code (at the bottom start) -->
                     <g transform="translate(0, 116)">
-                      <text id="svgRevCode" x="0" y="14" font-family="'Inter', monospace"
-                        font-size="13" font-weight="700" fill="#334155" letter-spacing="0.3">INCREDIBLE B.NO. 1170926T1857-2</text>
+                      <text id="svgRevCode" x="0" y="14" font-family="'Inter', monospace" font-size="13"
+                        font-weight="700" fill="#334155" letter-spacing="0.3">INCREDIBLE B.NO. 1170926T1857-2</text>
                     </g>
 
 
@@ -685,13 +685,13 @@
       if (!el) return;
       el.textContent = val;
       if (val.length <= 4) {
-        el.setAttribute('font-size', '62');
-      } else if (val.length <= 6) {
-        el.setAttribute('font-size', '52');
-      } else if (val.length <= 8) {
-        el.setAttribute('font-size', '44');
-      } else {
         el.setAttribute('font-size', '36');
+      } else if (val.length <= 6) {
+        el.setAttribute('font-size', '33');
+      } else if (val.length <= 8) {
+        el.setAttribute('font-size', '30');
+      } else {
+        el.setAttribute('font-size', '25');
       }
     }
 
@@ -879,7 +879,7 @@
 
           // Ensure logo href has embedded base64
           if (typeof embeddedLogoBase64 !== "undefined" && embeddedLogoBase64) {
-            svgString = svgString.replace(/<image id="svgLogo"[^>]*\/?>/, '<image id="svgLogo" href="' + embeddedLogoBase64 + '" xlink:href="' + embeddedLogoBase64 + '" x="22" y="16" width="180" height="66" preserveAspectRatio="xMidYMid meet" />');
+            svgString = svgString.replace(/<image id="svgLogo"[^>]*\/?>/g, '<image id="svgLogo" href="' + embeddedLogoBase64 + '" xlink:href="' + embeddedLogoBase64 + '" x="22" y="16" width="180" height="66" preserveAspectRatio="xMidYMid meet" />');
           }
 
 
@@ -1102,11 +1102,16 @@
       setVal('inputEmail', 'curewith3d@anvka.com');
       setVal('inputRevCode', 'INCREDIBLE B.NO. 1170926T1857-2');
 
-      setupLiveSync();
+      document.querySelectorAll('#labelForm input').forEach(input => {
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      });
     }
 
     // --- Robust App Init ---
+    let appInitialized = false;
     function initApp() {
+      if (appInitialized) return;
+      appInitialized = true;
       try {
         initDates();
         setupLiveSync();
